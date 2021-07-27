@@ -22,5 +22,42 @@ void run(){}
 void asterisk(){}
 int safetyAlgorithm(int customer_number, int* request){}
 int read_file(char* fileName, int* maximum){
+  int array[n];
+    int n=20; 
+    //Open file:
+    FILE* in = fopen(fileName,"r");
 
+
+    if(!in){
+         //if undefined
+        printf("ERROR READING FILE \n");
+        return -1;
+        
+    }else{
+        int index=0; //STARTAT 0
+        size_t count; 
+        char* line = malloc(100);
+        
+        while(getline(&line,&count,in)!=-1){ //in each line
+            char* token = NULL;
+            token = strtok(line,",");
+            //we need to handle what happens when
+            //token is not null
+            while(token!=NULL){ 
+                array[index]=atoi(token);
+                token=strtok(NULL,",");
+                index++;
+            }
+
+        }
+        //lets traverse the 2d matrix
+        for(int i=0; i< NUM_OF_CUST;i++){ //row
+            for(int j=0;j<NUM_OF_RES;j++){ //col
+                *(maximum+i*NUM_OF_RES+j)=array[i*NUM_OF_RES+j];
+            }
+        }
+
+        return 1;
+    }
+    return 0;
 }
