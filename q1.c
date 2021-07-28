@@ -41,7 +41,28 @@ int main(int argc, char* argv[]){
 
 
 }
-int RQ(int customer_number){}
+int RQ(int customer_number){ //we need to request the resources
+    //PSUEDO Code:
+    for(int i=0; i < 4;i++){
+        if(request[i] > maximum[customer_number][i]){
+            return -1;
+        }
+        else if(request[i] > available[i]){
+            return -1;
+        }
+    }
+    //If does not meet safety algo standards
+    if(!safetyAlgorithm(customer_number, request)){
+        return -1;
+    }
+
+    for(int i = 0; i < 4; i++){
+        allocation[customer_number][i] += request[i];
+        available[i] -= request[i];
+    }
+
+    return 0;
+}
 void RL(int customer_number){}
 void run(){}
 void asterisk(){}
