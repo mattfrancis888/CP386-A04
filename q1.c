@@ -14,6 +14,31 @@ int allocation[NUM_OF_CUST][NUM_OF_RES];//amount allocated to each customer
 int need[NUM_OF_RES]; //need for each customer
 
 int main(int argc, char* argv[]){
+    int a,b,c,d;
+    char command[4];
+    int customer_number;
+    int i;
+
+
+    if(argc>0){
+        int index=0;
+        
+        for(i=1;i < argc; i++){
+            available[index]=atoi(argv[i]);
+            index++;
+        }
+
+    }else{
+        printf("you need to enter an arugment\n");
+    }
+
+
+    //READ FILE
+    char* fileName = "sample.txt";
+
+    int result = read_file(fileName,maximum[0]);
+    printf("READ: %d\n\n", result);
+
 
 }
 int RQ(int customer_number){}
