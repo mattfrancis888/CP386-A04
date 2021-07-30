@@ -1,7 +1,7 @@
 int RQ(int);
 void RL(int);
 void run();
-void asterisk();
+void astk();
 int read_file(char* fileName, int* maximum);
 int safetyAlgorithm(int, int* request);
 #define NUM_OF_RES 4 //columns
@@ -51,7 +51,40 @@ void RL(int customer_number){
     }
 }
 
-void asterisk(){}
+void astk(){
+
+    printf("\n");
+    //Display availble array here in this loop
+    printf("available array\n");
+    for(int i=0;i<4;i++){
+        printf("%d ", available[i]);
+    }
+    printf("\n");
+    // display max array
+    printf("maximum array\n");
+    for(int i=0; i <NUM_OF_CUST;i++){
+        printf("\n");
+        for(int j=0;j<NUM_OF_RES;j++){
+            printf("%d\t",maximum[i][j]);
+        }
+    }
+    printf("\n");
+    //display allocated here
+    printf("allocation\n");
+    for(int i=0; i <NUM_OF_CUST;i++){
+        printf("\n");
+        for(int j=0;j<NUM_OF_RES;j++){
+            printf("%d\t",allocation[i][j]);
+        }
+    }
+    printf("\n");
+    //display n here
+    printf("need\n");
+    for(int i=0;i<4;i++){
+        printf("%d ", need[i]);
+    }
+    printf("\n");
+}
 int safetyAlgorithm(int customer_number, int* request){}
 int read_file(char* fileName, int* maximum){
   int array[n];
