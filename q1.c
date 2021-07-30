@@ -17,7 +17,14 @@ int main(int argc, char* argv[]){
 
 }
 int RQ(int customer_number){}
-void RL(int customer_number){}
+void RL(int customer_number){
+    for(int i=0; i < 4; i++){
+        // increment release
+        available[i]+=release[i];
+        //decrement release at index i 
+        allocation[customer_number][i]-=release[i];
+    }
+}
 void run(){}
 void asterisk(){}
 int safetyAlgorithm(int customer_number, int* request){}
