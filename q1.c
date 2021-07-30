@@ -85,7 +85,61 @@ void astk(){
     }
     printf("\n");
 }
-int safetyAlgorithm(int customer_number, int* request){}
+int safetyAlgorithm(int customer_number, int* request){
+    // declaring resources
+    int copy_resources[4];
+    int copy_allocation[NUM_OF_CUST][NUM_OF_RES];
+     for(int i=0; i<4;i++){
+        copy_resources[i]=available[i];
+    }
+      for(int i=0; i <NUM_OF_CUST;i++){
+        for(int j=0;j<NUM_OF_RES;j++){
+            copy_allocation[i][j]=allocation[i][j];
+        }
+    }
+
+    for(int i=0; i <NUM_OF_RES;i++){
+        if(*(request+i)>copy_resources[i]){
+            return 0;
+        }
+    }
+
+    for(int i=0; i < NUM_OF_RES;i++){
+        copy_resources[i]-=*(request+i);
+        copy_allocation[customer_number][i]+=*(request+i);
+    }
+
+    int finish[NUM_OF_CUST];
+    for(int i=0; i <NUM_OF_CUST;i++){
+        finish[i]=0;
+    }
+
+    for(int i=0; i < NUM_OF_CUST; i++){
+        for(int j=0; j<NUM_OF_RES;j++){
+            if(!finish[j]){
+                for(int k = 0; k<4;k++){
+                    if(!((maximum[j][k] - copy_allocation[j][k]) > copy_resources[k])){
+                        finish[j]=1;
+                        for(int l=0;l<4;l++){
+                            copy_resources[l]+=copy_allocation[j][l];
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for(int i=0; i <4;i++){
+        copy_allocation[customer_number][i]-=*(request+i);
+    }
+
+    for(int f = 0 ; f< NUM_OF_CUST;f++){
+        if(!finish[f]){
+            return 0;
+        }
+    }
+    return 1;
+}
 int read_file(char* fileName, int* maximum){
   int array[n];
     int n=20; 
