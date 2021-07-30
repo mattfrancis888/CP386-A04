@@ -16,7 +16,32 @@ int need[NUM_OF_RES]; //need for each customer
 int main(int argc, char* argv[]){
 
 }
-int RQ(int customer_number){}
+int RQ(int customer_number){
+
+ 
+    // loop as long as i < 4
+    for(int i=0;i<4;i++){
+        // compare if requests at index i is less than avail res if thats the case, return  -1
+        if(request[i]>available[i]){
+            return -1;
+        }
+        if(request[i]>maximum[customer_number][i]){
+            return -1;
+        }
+    }
+    if(!safetyAlgorithm(customer_number, request)){
+        return -1;
+    }
+    // request resources function
+    for(int i=0; i < 4;i++){
+        //decrement 
+        available[i]-=request[i];
+        //increment
+        allocation[customer_number][i]+=request[i];
+    }
+
+    return 0;
+}
 void RL(int customer_number){
     for(int i=0; i < 4; i++){
         // increment release
