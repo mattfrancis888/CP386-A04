@@ -50,7 +50,7 @@ void RL(int customer_number){
         allocation[customer_number][i]-=release[i];
     }
 }
-void run(){}
+
 void asterisk(){}
 int safetyAlgorithm(int customer_number, int* request){}
 int read_file(char* fileName, int* maximum){
