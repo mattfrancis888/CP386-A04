@@ -1,3 +1,11 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/stat.h>
+
+
 int RQ(int);
 void RL(int);
 void run();
@@ -73,32 +81,7 @@ int main(int argc, char* argv[]){
 
 }
 
-int RQ(int customer_number){ 
-    //we need to request the resources
-    //PSUEDO Code:
-    for(int i=0; i < 4;i++){
-        //if request exceeds maximum demand of customer
-        if(request[i] > maximum[customer_number][i]){
-            return -1;
-        }else if(request[i] > available[i]){  //if request exceeds available amount of each resource
-            return -1;
-        }
 
-    }
-    //If does not meet safety algo standards
-    if(!safetyAlgorithm(customer_number, request)){
-        return -1;
-    }
-
-    for(int i = 0; i < 4; i++){
-        //add ammount allocated to each customer to request array
-        allocation[customer_number][i] += request[i];
-           //subtract available amount of each resource to  request array
-        available[i] -= request[i];
-    }
-
-    return 0;
-}
 int RQ(int customer_number){
 
  
