@@ -36,12 +36,43 @@ int main(int argc, char* argv[]){
 
     //READ FILE
     char* fileName = "sample.txt";
+    
 
     int result = read_file(fileName,maximum[0]);
     printf("READ: %d\n\n", result);
 
+    scanf("%s %d %d %d %d %d", command, &customer_number, &a,&b,&c,&d);
+    
+    printf("\n");
+    printf("\n");
+   
+    if( strcmp(command, "RQ" ) == 0){  //HANDLE RQ 
+
+        request[0]=a;
+        request[1]=b;
+        request[2]=c;
+        request[3]=d;
+
+        RQ(customer_number);
+
+    }else if( strcmp(command,"*")==0 ){
+
+        asterisk();
+
+    }else if( strcmp(command, "RL" )==0 ){ //HANDLE Rl
+
+        release[0]=a;
+        release[1]=b;
+        release[2]=c;
+        release[3]=d;
+
+        RL(customer_number);
+
+    }
+
 
 }
+
 int RQ(int customer_number){ 
     //we need to request the resources
     //PSUEDO Code:
