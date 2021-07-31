@@ -99,7 +99,6 @@ int RQ(int customer_number){
 
     return 0;
 }
-<<<<<<< HEAD
 int RQ(int customer_number){
 
  
@@ -184,57 +183,10 @@ int safetyAlgorithm(int customer_number, int* request){
 
     for(int i=0; i <NUM_OF_RES;i++){
         if(*(request+i)>copy_resources[i]){
-=======
-
-void RL(int customer_number){
-    for(int i=0; i < 4; i++){
-        //add available amount of each resource to  release array
-        available[i] += release[i];
-        //subtract amount of allocated to each customer to release array
-        allocation[customer_number][i] -= release[i];
-    }
-}
-
-void run(){}
-void asterisk(){}
-int safetyAlgorithm(int customer_number, int* request){
- 
-    int copy_allocation[NUM_OF_CUST][NUM_OF_RES]; //temp allocation for each customer
-       
-    int copy_resources[4]; //temp resource
-
-   
-    for(int i = 0; i < NUM_OF_CUST; i++){
-         
-        for(int j=0;j<NUM_OF_RES;j++){
-            //add temp allocation to each customer to real alocation array
-            copy_allocation[i][j] = allocation[i][j];
-        }
-
-    }
-
-    for(int i = 0; i < 4; i++){  
-        //add temp available amount of each resource to available amount of resource
-        copy_resources[i]=available[i];
-
-    }
-
-    for(int i = 0; i < NUM_OF_RES; i++){
-        //update temp resource
-        copy_resources[i] -=*(request+i);
-        //update temp allocation
-        copy_allocation[customer_number][i] +=*(request+i);
-    }
-
-    for(int i = 0; i < NUM_OF_RES; i++){
-        //if request is larger than copy resource
-        if( *(request + i) >copy_resources[i]){
->>>>>>> 6b91021c8ec96c686b456b4da70a67a18b704529
             return 0;
         }
     }
 
-<<<<<<< HEAD
     for(int i=0; i < NUM_OF_RES;i++){
         copy_resources[i]-=*(request+i);
         copy_allocation[customer_number][i]+=*(request+i);
@@ -265,57 +217,10 @@ int safetyAlgorithm(int customer_number, int* request){
     }
 
     for(int f = 0 ; f< NUM_OF_CUST;f++){
-=======
-    //handle if its finished
-    int finish[NUM_OF_CUST];
-    for(int i=0; i <NUM_OF_CUST;i++){
-
-        finish[i]=0;
-
-    }
-
-    for(int i=0; i < NUM_OF_CUST; i++){
-
-        for(int j=0; j<NUM_OF_RES;j++){
-            //if we are not finished
-            if(!finish[j]){
-
-                for(int a = 0; a < 4; a++){
-
-                    if( !((maximum[j][a] - copy_allocation[j][a]) > copy_resources[a]) ){
-                        //finished
-                        finish[j] = 1;
-                        //handle temp resource
-                        for(int b=0; b<4; b++){
-                            //update temp resource
-                            copy_resources[b] +=copy_allocation[j][b];
-
-                        }
-
-                    }
-                }
-            }
-
-        }
-    }
-
-    for(int i=0; i < 4; i++){
-        //update temp allocation
-        copy_allocation[customer_number][i]-=*(request+i);
-    }
-
-
-    for(int f = 0 ; f< NUM_OF_CUST;f++){
-        //if not finished
->>>>>>> 6b91021c8ec96c686b456b4da70a67a18b704529
         if(!finish[f]){
             return 0;
         }
     }
-<<<<<<< HEAD
-=======
-    //we are done
->>>>>>> 6b91021c8ec96c686b456b4da70a67a18b704529
     return 1;
 }
 int read_file(char* fileName, int* maximum){
