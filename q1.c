@@ -43,7 +43,7 @@ int main(int argc, char* argv[]){
 
 
     //READ FILE
-    char* fileName = "sample.txt";
+    char* fileName = "sample4_in.txt";
     
 
     int result = read_file(fileName,maximum[0]);
