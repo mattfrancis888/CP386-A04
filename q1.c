@@ -65,7 +65,7 @@ int main(int argc, char* argv[]){
 
     }else if( strcmp(command,"*")==0 ){
 
-        asterisk();
+        astk();
 
     }else if( strcmp(command, "RL" )==0 ){ //HANDLE Rl
 
@@ -207,8 +207,9 @@ int safetyAlgorithm(int customer_number, int* request){
     return 1;
 }
 int read_file(char* fileName, int* maximum){
-  int array[n];
     int n=20; 
+  int array[n];
+    
     //Open file:
     FILE* in = fopen(fileName,"r");
 
